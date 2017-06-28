@@ -25,3 +25,4 @@ deck = FrenchDeck()
 suits_values = dict(spades=3, diamonds=1, hearts=2, clubs=0)
 for i in suits_values.items():
     print(i, i[0], i[1])
+
