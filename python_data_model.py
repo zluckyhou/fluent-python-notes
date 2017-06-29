@@ -1,11 +1,12 @@
 # -*- coding:utf-8 -*-
 
 import collections
+from random import choice
 
 Card = collections.namedtuple('Card', ['rank', 'suit'])
 
 
-class FrenchDeck(object):
+class FrenchDeck:
     ranks = [str(n) for n in range(2, 11)] + list('JQKA')
     suits = 'spades diamonds clubs hearts'.split()
 
@@ -22,7 +23,24 @@ class FrenchDeck(object):
 
 deck = FrenchDeck()
 
+choice(deck)
+
+deck[:3]
+deck[12::13]
+
+for card in deck:
+    print(card)
+
+for card in reversed(deck):
+    print(card)
+
 suits_values = dict(spades=3, diamonds=1, hearts=2, clubs=0)
-for i in suits_values.items():
-    print(i, i[0], i[1])
+
+
+def spades_high(card):
+    rank_value = FrenchDeck.ranks.index(card.rank)
+    return rank_value * len(suits_values) + suits_values[card.suit]
+
+for card in sorted(deck,key=spades_high):
+    print(card)
 
