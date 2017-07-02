@@ -1,6 +1,6 @@
 # fluent-python-notes
-notes for fluent python
+Notes for fluent python
 
-- hello
-- **world**
-- *dash*
+- chapter1: data model
+- chapter2: An array of sequences. 
+    - Stop at: Nested tuple unpacking
