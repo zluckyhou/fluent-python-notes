@@ -104,6 +104,7 @@ def grade(score, brakepoints=[60, 70, 80, 90], grades='FDCBA'):
     i = bisect.bisect(brakepoints, score)
     return grades[i]
 
+
 [grade(score) for score in [33, 99, 70, 77, 89, 90, 100]]
 
 # Inserting with bisect.insort
@@ -112,6 +113,26 @@ random.seed(1729)
 
 my_list = []
 for i in range(SIZE):
-    new_item = random.randrange(SIZE*2)
-    bisect.insort(my_list,new_item)
-    print('%2d ->' % new_item,my_list)
+    new_item = random.randrange(SIZE * 2)
+    bisect.insort(my_list, new_item)
+    print('%2d ->' % new_item, my_list)
+
+# shin
+
+x = [1, 2, 3]
+id(x)
+y = x
+id(y)
+z = [1, 2, 3]
+id(z)
+
+id(x) == id(y)
+
+for i in range(3):
+    x = ['_']*3
+    print(id(x))
+
+s = set([1,2,3])
+print(id(s))
+s.add(4)
+print(id(s))
