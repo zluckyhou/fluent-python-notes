@@ -5,6 +5,10 @@ import dis
 import sys
 import bisect
 import random
+from array import array
+import os
+
+os.chdir(r'C:\Users\zluck\Documents\Python Scripts\fluent-python-notes')
 
 Card = collections.namedtuple('Card', ['rank', 'suit'])
 
@@ -129,10 +133,21 @@ id(z)
 id(x) == id(y)
 
 for i in range(3):
-    x = ['_']*3
+    x = ['_'] * 3
     print(id(x))
 
-s = set([1,2,3])
+s = set([1, 2, 3])
 print(id(s))
 s.add(4)
 print(id(s))
+
+# When a list is not the answer
+
+floats = array('d', (random.random() for i in range(10 ** 7)))
+with open('floats.bin', 'wb') as f:
+    floats.tofile(f)
+
+floats2 = array(floats.typecode)
+with open('floats.bin', 'rb') as f:
+    floats2.fromfile(f, 10 ** 7)
+floats2[-1]
