@@ -8,6 +8,10 @@ import random
 from array import array
 import os
 
+import numpy
+import pandas
+from time import perf_counter as pc
+
 os.chdir(r'C:\Users\zluck\Documents\Python Scripts\fluent-python-notes')
 
 Card = collections.namedtuple('Card', ['rank', 'suit'])
@@ -151,3 +155,28 @@ floats2 = array(floats.typecode)
 with open('floats.bin', 'rb') as f:
     floats2.fromfile(f, 10 ** 7)
 floats2[-1]
+
+# numpy and scipy
+a = numpy.arange(12)
+b = pandas.Series([1, 2, 3])
+
+t0 = pc()
+pc() - t0
+
+# deque and other queues
+
+from collections import deque
+
+dq = deque(range(10), maxlen=10)
+dq.rotate(3)
+dq
+dq.rotate(-4)
+dq
+
+dq.appendleft(-1)
+dq.extend([11, 22, 33])
+dq.extendleft([10, 20, 30, 40])
+
+a = (1, 23, 'a', 'b', dq)
+
+
