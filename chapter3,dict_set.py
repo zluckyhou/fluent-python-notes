@@ -57,9 +57,56 @@ with open(sys.argv[0], encoding='utf-8') as fp:
             location = (line_no, column_no)
             index[word].append(location)
 for word in sorted(index, key=str.upper):
-    print(word,index[word])
+    print(word, index[word])
 
 
+# The __missing__ method
+# test for item retrieval using `d[key]` notation::
+
+class StrKeyDict0(dict):
+    def __missing__(self, key):
+        if isinstance(key, str):
+            raise KeyError(key)
+        return self[str(key)]
+
+    def get(self, key, default=None):
+        try:
+            return self[key]
+        except KeyError:
+            return default
+
+    def __contains__(self, key):
+        return key in self.keys() or str(key) in self.keys()
 
 
+# Variations of dict
+ct = collections.Counter('asdfsfdaasdsf')
+ct.update('aaaaxxxx')
+ct
+ct.most_common(2)
 
+
+class StrKeyDict(collections.UserDict):
+    def __missing__(self, key):
+        if isinstance(key, str):
+            raise KeyError(key)
+        return self[str(key)]
+
+    def __contains__(self, key):
+        return str(key) in self.data
+
+    def __setitem__(self, key, item):
+        self.data[str(key)] = item
+
+# Immutable mappings
+from types import MappingProxyType
+d = {1:'A'}
+d_proxy = MappingProxyType(d)
+d_proxy
+d_proxy[1]
+d_proxy[2] = 'x'
+d[2] = 'B'
+d_proxy
+d_proxy[2]
+
+# Set theory
