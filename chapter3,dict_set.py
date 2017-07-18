@@ -110,3 +110,20 @@ d_proxy
 d_proxy[2]
 
 # Set theory
+
+s = {1}
+type(s)
+s
+s.pop()
+s
+
+s = {1,2,3}
+s = set([1,2,3])
+
+from dis import dis
+dis('{1}')
+dis('set([1])')
+
+frozenset(range(10))
+from unicodedata import name
+{chr(i) for i in range(32,256) if 'SIGN' in name(chr(i),'')}
