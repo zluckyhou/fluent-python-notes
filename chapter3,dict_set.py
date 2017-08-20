@@ -127,3 +127,4 @@ dis('set([1])')
 frozenset(range(10))
 from unicodedata import name
 {chr(i) for i in range(32,256) if 'SIGN' in name(chr(i),'')}
+len(format(sys.maxsize,'b'))
