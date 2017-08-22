@@ -40,6 +40,8 @@ list(filter(lambda n: n % 2, range(6)))
 list(map(factorial, filter(lambda n: n % 2, range(6))))
 [factorial(n) for n in range(6) if n % 2]
 
+from operator import add
+
 reduce(add, range(100))
 sum(range(100))
 reduce(lambda x, y: x + y, range(100))
@@ -60,6 +62,7 @@ class BingoCage:
 
     def __call__(self, *args, **kwargs):
         return self.pick()
+
 
 bingo = BingoCage(range(3))
 bingo.pick()
